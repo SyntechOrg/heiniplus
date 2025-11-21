@@ -3,7 +3,7 @@ import React from "react";
 
 const Video1 = () => {
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative overflow-x-hidden h-screen 100vw">
       <video
         src="/videos/video.mp4"
         autoPlay
