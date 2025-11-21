@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/font/HelveticaNeue-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/font/HelveticaNeue-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/font/HelveticaNeue-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/font/HelveticaNeue-Roman.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/font/HelveticaNeue-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+* {
+  font-family: "Helvetica Neue", sans-serif;
+}
