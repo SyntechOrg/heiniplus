@@ -40,27 +40,19 @@ const Page = () => {
   return (
     <div>
       <StartPage image={frame1} title="Über Uns" />
-
       <RevealOnDesktop>
         <Fugen />
       </RevealOnDesktop>
-
       <RevealOnDesktop>
         <ServiceGrids />
       </RevealOnDesktop>
-
       <RevealOnDesktop>
         <Gründung />
       </RevealOnDesktop>
-
-      <RevealOnDesktop>
-        <Schau />
-      </RevealOnDesktop>
-
+      <Schau />
       <RevealOnDesktop>
         <Bieten />
       </RevealOnDesktop>
-
       <RevealOnDesktop>
         <Video1 />
       </RevealOnDesktop>

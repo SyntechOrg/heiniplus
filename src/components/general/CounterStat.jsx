@@ -14,10 +14,13 @@ function CounterStat({ end, suffix = "+", label }) {
           enableScrollSpy
           scrollSpyOnce
           useGrouping={false}
-        />
+        >
+          {({ countUpRef }) => <span ref={countUpRef} />}
+        </CountUp>
         {suffix}
       </h1>
-      <p className="text-[#6C6C6C] text-[16px] sm:text-[18px] lg:text-[22px]  leading-snug">
+
+      <p className="text-[#6C6C6C] text-[16px] sm:text-[18px] lg:text-[22px] leading-snug">
         {label}
       </p>
     </div>

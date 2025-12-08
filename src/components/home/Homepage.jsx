@@ -9,13 +9,14 @@ import ractangle20 from "../../../public/images/Rectangle 20.svg";
 const Homepage = () => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      <div className="absolute inset-0 h-full w-full">
+      <div className="relative h-screen w-full">
         <Image
           src={homePage}
           alt="Homepage background"
-          priority
           fill
+          priority
           className="object-cover"
+          sizes="100vw"
         />
       </div>
       <div className="h-3 md:h-5  bg-[#A83552] absolute  w-full bottom-0 right-0 left-0 "></div>

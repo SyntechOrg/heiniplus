@@ -3,9 +3,9 @@ import React from "react";
 import Image from "next/image";
 import footerImage from "../../../public/images/footerPhoto.png";
 import whiteArrow from "../../../public/images/arrow.svg";
-import social1 from "../../../public/images/fb.svg";
-import social2 from "../../../public/images/ig.svg";
-import social3 from "../../../public/images/x.svg";
+// import social1 from "../../../public/images/fb.svg";
+// import social2 from "../../../public/images/ig.svg";
+// import social3 from "../../../public/images/x.svg";
 
 const Footer = () => {
   return (

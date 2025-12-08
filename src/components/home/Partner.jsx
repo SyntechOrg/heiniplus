@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import logo1 from "../../../public/images/logo1.svg";
 import logo2 from "../../../public/images/logo2.svg";
-import logo3 from "../../../public/images/logo3.svg";
+import logo3 from "../../../public/images/logo3.png";
 import logo4 from "../../../public/images/logo4.svg";
 import logo5 from "../../../public/images/logo5.svg";
 import logo6 from "../../../public/images/logo6.svg";

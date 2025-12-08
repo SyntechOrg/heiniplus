@@ -6,8 +6,36 @@ import image1 from "../../../public/images/image1.png";
 import image2 from "../../../public/images/image2.png";
 import image3 from "../../../public/images/image3.png";
 
+const ProgressLine = ({ isActive, isPast }) => {
+  const [width, setWidth] = useState(isPast ? "100%" : "0%");
+
+  useEffect(() => {
+    if (isActive) {
+      setWidth("0%");
+      const timer = setTimeout(() => {
+        setWidth("100%");
+      }, 50);
+      return () => clearTimeout(timer);
+    } else {
+      setWidth(isPast ? "100%" : "0%");
+    }
+  }, [isActive, isPast]);
+
+  return (
+    <div className="bg-[#A8355220] h-2 md:h-3 w-full relative rounded-sm overflow-hidden">
+      <div
+        className={`absolute inset-0 h-full bg-[#A83552] rounded-sm transition-all ${
+          isActive ? "duration-[5000ms] ease-linear" : "duration-0"
+        }`}
+        style={{ width }}
+      ></div>
+    </div>
+  );
+};
+
 const Gründung = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [cycle, setCycle] = useState(0);
   const containerRef = useRef(null);
 
   const slides = [
@@ -31,13 +59,20 @@ const Gründung = () => {
     },
   ];
 
+  // Auto-advance Logic
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slides.length);
+      setActiveSlide((prev) => {
+        if (prev === slides.length - 1) {
+          setCycle((c) => c + 1);
+          return 0;
+        }
+        return prev + 1;
+      });
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, [slides.length, activeSlide]);
 
   return (
     <div
@@ -57,7 +92,7 @@ const Gründung = () => {
           </p>
         </div>
 
-        <div className="w-full lg:w-[60%] relative h-[300px] md:h-[500px]  overflow-hidden">
+        <div className="w-full lg:w-[60%] relative h-[300px] md:h-[500px] overflow-hidden">
           <Image
             src={slides[activeSlide].image}
             alt={`History ${slides[activeSlide].year}`}
@@ -72,7 +107,10 @@ const Gründung = () => {
           <div
             key={index}
             className="w-full flex flex-col items-center justify-center cursor-pointer group"
-            onClick={() => setActiveSlide(index)}
+            onClick={() => {
+              setActiveSlide(index);
+              setCycle((c) => c + 1);
+            }}
           >
             <h4
               className={`text-2xl md:text-[40px] font-medium transition-colors duration-500 mb-2 ${
@@ -83,12 +121,12 @@ const Gründung = () => {
             >
               {slide.year}
             </h4>
-            <div className="bg-[#A8355220] h-2 md:h-3 w-full relative rounded-sm overflow-hidden">
-              <div
-                className="absolute inset-0 h-full bg-[#A83552] rounded-sm transition-all duration-1000 ease-in-out"
-                style={{ width: activeSlide === index ? "100%" : "0%" }}
-              ></div>
-            </div>
+
+            <ProgressLine
+              key={`${index}-${cycle}`}
+              isActive={index === activeSlide}
+              isPast={index < activeSlide}
+            />
           </div>
         ))}
       </div>
