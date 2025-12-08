@@ -6,7 +6,7 @@ const StudioLocations = () => {
     <div className="w-full bg-[#A83552] py-20 px-4">
       <div className="container mx-auto ">
         <div className="text-center mb-12">
-          <p className="text-white/80 text-sm  tracking-widest uppercase mb-2">
+          <p className="text-white/70 text-sm  tracking-widest uppercase mb-2">
             FINDEN SIE UNSER STUDIO
           </p>
           <h2 className="text-white text-4xl md:text-5xl font-bold">
