@@ -3,8 +3,8 @@
 import React from "react";
 import CounterStat from "../../components/general/CounterStat";
 import Image from "next/image";
-import photo1 from "../../../public/images/photo1.png";
-import photo2 from "../../../public/images/photo2.png";
+import photo1 from "../../../public/images/photo1.jpg";
+import photo2 from "../../../public/images/photo2.jpg";
 
 function Fugen() {
   return (

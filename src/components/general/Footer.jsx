@@ -3,9 +3,11 @@ import React from "react";
 import Image from "next/image";
 import footerImage from "../../../public/images/footerPhoto.png";
 import whiteArrow from "../../../public/images/arrow.svg";
-// import social1 from "../../../public/images/fb.svg";
-// import social2 from "../../../public/images/ig.svg";
-// import social3 from "../../../public/images/x.svg";
+import social1 from "../../../public/images/fb.svg";
+import social2 from "../../../public/images/ig.svg";
+import social3 from "../../../public/images/x.svg";
+
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -48,7 +50,7 @@ const Footer = () => {
           <div className="bg-[#0000006E] absolute inset-0 z-0"></div>
         </div>
         <div className="hidden lg:block h-auto min-h-screen w-[1px] bg-[#FFFFFF33]"></div>
-        <div className="w-full lg:w-[60%] px-6 py-12 lg:pl-10 lg:py-[80px] flex flex-col justify-between gap-16 lg:h-auto lg:min-h-screen">
+        <div className="w-full lg:w-[60%] px-6 py-12  lg:pl-10 lg:py-[80px] flex flex-col justify-between  gap-20 md:gap-50 lg:h-auto lg:min-h-screen">
           <div className="flex flex-col items-center gap-0 w-full">
             <div className="flex flex-col md:flex-row items-start justify-between py-8 w-full border-b border-[#FFFFFF26] gap-4">
               <h2 className="text-[#FFFFFF66]  text-[12px] uppercase min-w-[120px]">
@@ -102,7 +104,7 @@ const Footer = () => {
                 albin.heini.gmbh@sunrise.ch
               </a>
             </div>
-            {/* <div className="flex flex-col md:flex-row items-start justify-between py-8 w-full border-b border-[#FFFFFF26] gap-4">
+            <div className="flex flex-col md:flex-row items-start justify-between py-8 w-full border-b border-[#FFFFFF26] gap-4">
               <h2 className="text-[#FFFFFF66]  text-[12px] uppercase min-w-[120px]">
                 Folgen Sie uns
               </h2>
@@ -117,75 +119,58 @@ const Footer = () => {
                   alt="Instagram"
                   className="cursor-pointer hover:opacity-80"
                 />
-                <Image
+                {/* <Image
                   src={social3}
                   alt="X"
                   className="cursor-pointer hover:opacity-80"
-                />
+                /> */}
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Footer Links Section */}
           <div className="flex flex-col items-start w-full gap-12">
             <div className="w-full lg:w-[80%] flex flex-col md:flex-row items-start justify-between gap-8">
               <div className="flex flex-col items-start gap-4">
-                <a
-                  href="/uberuns#Bieten"
-                  className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors"
-                >
-                  Leistungen
-                </a>
-                <a
-                  href="/referenzen"
-                  className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors"
-                >
-                  Projekte
-                </a>
-                <a
-                  href="/"
-                  className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors"
-                >
-                  Partner
-                </a>
-                <a
-                  href="/uberuns"
-                  className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors"
-                >
-                  Über Uns
-                </a>
+                <Link href="/referenzen">
+                  <h1 className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors">
+                    Projects
+                  </h1>
+                </Link>
+                <Link href="/uberuns#Bieten">
+                  <h1 className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors">
+                    Leistungen
+                  </h1>
+                </Link>
+
+                <Link href="/uberuns">
+                  <h1 className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors">
+                    Über Uns
+                  </h1>
+                </Link>
               </div>
               <div className="flex flex-col items-start gap-4">
-                <a
-                  href="#"
-                  className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors"
-                >
-                  Team kennenlernen
-                </a>
-                <a
-                  href="#"
-                  className="text-lg text-[#FFFFFF66] hover:text-[#A83552] transition-colors"
-                >
-                  Kundenstimmen
-                </a>
-                <a
-                  href="#"
-                  className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors"
-                >
-                  FAQs (Häufig gestellte Fragen)
-                </a>
-                <a
-                  href="/kontakt"
-                  className="text-lg text-[#FFFFFF66] hover:text-[#A83552] transition-colors"
-                >
-                  Kontakt
-                </a>
+                <Link href="/#Einige">
+                  <h1 className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors">
+                    Kundenbewertungen
+                  </h1>
+                </Link>
+                <Link href="/kontakt">
+                  <h1 className="text-lg text-[#FFFFFF66] hover:text-[#A83552] transition-colors">
+                    Kontakt
+                  </h1>
+                </Link>
               </div>
             </div>
 
-            <div className="w-full border-t border-[#FFFFFF26] pt-8 text-center lg:text-left">
-              <p className="text-[14px] text-[#FFFFFF66] ">
-                © 2025 Heini Plus All Rights Reserved.
+            <div className="w-full border-t border-[#FFFFFF26] pt-8 text-center ">
+              <p className="text-[14px] text-[#FFFFFF66]">
+                Urheberrecht © {new Date().getFullYear()} Heini Plus | Gestaltet
+                von{" "}
+                <span className="hover:text-[#A83552]">
+                  {" "}
+                  <a href="https://syn-tech.ch">Syntech Solutions AG</a>{" "}
+                </span>
               </p>
             </div>
           </div>

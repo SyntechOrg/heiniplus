@@ -7,7 +7,7 @@ import human2 from "../../../public/images/human2.png";
 
 const Einige = () => {
   return (
-    <div className="container mx-auto py-12 md:py-20 px-4 md:px-6">
+    <div id="Einige" className="container mx-auto py-12 md:py-20 px-4 md:px-6">
       <h1 className="text-[#14171D] text-[32px] md:text-[54px]  mb-10 md:mb-16 leading-tight">
         Einige unserer <br className="md:hidden" /> zufriedenen Kunden
       </h1>
@@ -21,7 +21,10 @@ const Einige = () => {
               <p className="text-[#14171D] text-[13px] leading-relaxed  line-clamp-[8]">
                 „Das Team hat unsere Erwartungen wirklich übertroffen. Ihre
                 Einsatzbereitschaft und Expertise stellten sicher, dass jedes
-                Detail unseres Bürodesigns perfekt übereinstimmt.“
+                Detail unseres Bürodesigns perfekt mit unserer Markenidentität
+                übereinstimmt. Das Endergebnis ist ein wunderschöner,
+                funktionaler Raum, der unsere Anforderungen ideal erfüllt. Wir
+                könnten nicht zufriedener sein!“
               </p>
             </div>
             <h3 className="text-[#6C6C6C] text-xs  mt-1">Jan Muster</h3>
@@ -90,7 +93,8 @@ const Einige = () => {
               Einsatzbereitschaft und Expertise stellten sicher, dass jedes
               Detail unseres Bürodesigns perfekt mit unserer Markenidentität
               übereinstimmt. Das Endergebnis ist ein wunderschöner, funktionaler
-              Raum, der unsere Anforderungen ideal erfüllt.“
+              Raum, der unsere Anforderungen ideal erfüllt. Wir könnten nicht
+              zufriedener sein!“
             </p>
             <h3 className="text-[#6C6C6C] text-lg ">Jan Muster</h3>
           </div>

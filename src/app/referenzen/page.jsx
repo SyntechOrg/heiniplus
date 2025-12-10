@@ -35,7 +35,7 @@ const RevealOnDesktop = ({ children }) => {
 const Page = () => {
   return (
     <div>
-      <StartPage image={frame1} title="REFERENCES" />
+      <StartPage image={frame1} title="Referenzen" />
 
       <RevealOnDesktop>
         <Projects />

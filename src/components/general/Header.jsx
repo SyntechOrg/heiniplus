@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "../../../public/images/logo.svg";
 import arrow from "../../../public/images/arrow.svg";
 import rectangle from "../../../public/images/Rectangle.svg";
+import Link from "next/link";
 
 const Header = () => {
   const pathname = usePathname();
@@ -67,16 +68,16 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4 md:py-6 relative z-[10000]">
-        <a href="/">
+        <Link href="/">
           <div className="shrink-0">
-            <Image src={logo} alt="Logo" />
+            <Image src={logo} alt="Logo" className="w-[80%]" />
           </div>
-        </a>
+        </Link>
 
         <nav className="hidden lg:block text-white uppercase">
           <ul className="flex items-baseline justify-center gap-8 lg:gap-10">
             {/* Startseite Link (Active only if hash is empty) */}
-            <a href="/">
+            <Link href="/">
               <li
                 className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
                   isActive("/", "")
@@ -95,10 +96,10 @@ const Header = () => {
                   }`}
                 />
               </li>
-            </a>
+            </Link>
 
             {/* Leistungen Link (Active only if hash is #Bieten) */}
-            <a href="/uberuns#Bieten">
+            <Link href="/uberuns#Bieten">
               <li
                 className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
                   isActive("/uberuns", "#Bieten")
@@ -117,10 +118,10 @@ const Header = () => {
                   }`}
                 />
               </li>
-            </a>
+            </Link>
 
             {/* Über uns Link (Active only if hash is EMPTY) */}
-            <a href="/uberuns">
+            <Link href="/uberuns">
               <li
                 className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
                   isActive("/uberuns", "")
@@ -139,10 +140,10 @@ const Header = () => {
                   }`}
                 />
               </li>
-            </a>
+            </Link>
 
             {/* Referenzen Link */}
-            <a href="/referenzen">
+            <Link href="/referenzen">
               <li
                 className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
                   isActive("/referenzen", "")
@@ -161,9 +162,9 @@ const Header = () => {
                   }`}
                 />
               </li>
-            </a>
+            </Link>
 
-            <a href="/kontakt">
+            <Link href="/kontakt">
               <li>
                 <button className="flex flex-row items-center gap-4 rounded-full bg-[#A83552] px-8 py-3 text-sm md:text-base tracking-wide transition-transform duration-200 hover:scale-105">
                   <span>Kontakt</span>
@@ -174,7 +175,7 @@ const Header = () => {
                   />
                 </button>
               </li>
-            </a>
+            </Link>
           </ul>
         </nav>
 
@@ -211,7 +212,7 @@ const Header = () => {
         }`}
       >
         <nav className="flex flex-col items-center justify-center h-screen w-full text-white uppercase space-y-8">
-          <a
+          <Link
             href="/"
             className={`text-2xl font-medium tracking-wider transition-colors ${
               isActive("/", "") ? "text-[#A83552]" : "hover:text-[#A83552]"
@@ -219,8 +220,8 @@ const Header = () => {
             onClick={() => setIsOpen(false)}
           >
             Startseite
-          </a>
-          <a
+          </Link>
+          <Link
             href="/uberuns#Bieten"
             className={`text-2xl font-medium tracking-wider transition-colors ${
               isActive("/uberuns", "#Bieten")
@@ -230,8 +231,8 @@ const Header = () => {
             onClick={() => setIsOpen(false)}
           >
             Leistungen
-          </a>
-          <a
+          </Link>
+          <Link
             href="/uberuns"
             className={`text-2xl font-medium tracking-wider transition-colors ${
               isActive("/uberuns", "")
@@ -241,8 +242,8 @@ const Header = () => {
             onClick={() => setIsOpen(false)}
           >
             Über uns
-          </a>
-          <a
+          </Link>
+          <Link
             href="/referenzen"
             className={`text-2xl font-medium tracking-wider transition-colors ${
               isActive("/referenzen", "")
@@ -252,7 +253,7 @@ const Header = () => {
             onClick={() => setIsOpen(false)}
           >
             Referenzen
-          </a>
+          </Link>
 
           <button
             className="mt-4 flex items-center gap-3 rounded-full bg-[#A83552] px-10 py-4 text-xl tracking-wide hover:bg-[#8a2b42] transition-colors"
