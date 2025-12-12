@@ -1,10 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 
 const Bieten = () => {
   const [activeTab, setActiveTab] = useState("fugendichtungen");
+  const containerRef = useRef(null);
 
+  // Track scroll progress relative to this section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Create a parallax effect
+  const yRightColumn = useTransform(scrollYProgress, [0, 1], [0, -100]);
+
+  // --- DATA ARRAYS ---
   const Fugendichtungen = [
     {
       id: "01",
@@ -107,6 +124,7 @@ const Bieten = () => {
     },
   ];
 
+  // --- CONFIGURATION ---
   const categories = [
     {
       id: "fugendichtungen",
@@ -149,23 +167,37 @@ const Bieten = () => {
   const leftColumnData = contentData.slice(0, midPoint);
   const rightColumnData = contentData.slice(midPoint);
 
+  // Helper function to handle click and scroll
+  const handleCategoryClick = (categoryId) => {
+    // Only scroll if we are changing tabs
+    if (activeTab !== categoryId) {
+      setActiveTab(categoryId);
+      if (containerRef.current) {
+        containerRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  };
+
   return (
-    <section id="Bieten">
-      <div className="flex flex-col items-start justify-between container mx-auto mt-20">
-        <h1 className="text-[#A83552] font-medium tracking-widest uppercase mb-2">
-          WAS WIR BIETEN
-        </h1>
-        <h1 className="text-3xl lg:text-[50px] font-medium leading-tight">
-          Unsere Dienstleistungen
-        </h1>
-      </div>
-      <div className="flex flex-col lg:flex-row items-start justify-between container mx-auto py-10 lg:py-20 px-4 lg:px-0 gap-10 lg:gap-0">
-        <div className="flex flex-col gap-6 lg:gap-10 w-full lg:w-[35%]">
+    <section id="Bieten" ref={containerRef} className="relative">
+      <div className="flex flex-col lg:flex-row items-start justify-between container mx-auto py-10 lg:py-20 px-4 lg:px-0 gap-10 lg:gap-0 ">
+        <div className="flex flex-col gap-6 lg:gap-10 w-full lg:w-[35%] lg:sticky lg:top-10 ">
+          <div className="flex flex-col items-start justify-between container mx-auto mt-20">
+            <h1 className="text-[#A83552] font-medium tracking-widest uppercase mb-2">
+              WAS WIR BIETEN
+            </h1>
+            <h1 className="text-3xl lg:text-[47px] font-medium leading-tight">
+              Unsere Dienstleistungen
+            </h1>
+          </div>
           <div className="w-full flex flex-col border-t border-gray-200 ">
             {categories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => setActiveTab(category.id)}
+                onClick={() => handleCategoryClick(category.id)}
                 className="w-full text-left py-4 border-b border-gray-200 group transition-all duration-300"
               >
                 <div className="flex items-center gap-3">
@@ -173,7 +205,7 @@ const Bieten = () => {
                     {category.number}
                   </span>
                   <span
-                    className={`text-lg lg:text-[20px]  transition-colors duration-300 ${
+                    className={`text-lg lg:text-[20px] transition-colors duration-300 ${
                       activeTab === category.id
                         ? "text-black"
                         : "text-[#555555] group-hover:text-black"
@@ -199,42 +231,65 @@ const Bieten = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-[60%] flex flex-col items-center lg:flex-row gap-4">
-          <div className="grid grid-cols-1 gap-4 w-full lg:w-1/2 self-start">
-            {leftColumnData.map((item, index) => (
-              <div
-                key={index}
-                className={`p-6 lg:p-[30px] group hover:bg-[#A83552] flex flex-col items-start justify-between gap-6 lg:gap-10 text-black hover:text-white border border-[#E0E0E0] rounded-xl transition-all duration-300 ${
-                  item.id === "01" ? "mt-30" : ""
-                }`}
-              >
-                <h1 className="text-lg lg:text-[20px]">{item.id}</h1>
-                <h1 className="uppercase text-lg lg:text-[20px] ">
-                  {item.title}
-                </h1>
-                <p className="text-sm lg:text-[14px] group-hover:text-[#FFC1C2] mb-4 lg:mb-15">
-                  {item.description}
-                </p>
+        {/* --- RIGHT SIDE (Grid with Parallax & Animations) --- */}
+        <div className="w-full lg:w-[60%] flex flex-col items-center lg:flex-row gap-4 mt-0 ">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab} // Unique key triggers the animation on change
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-col lg:flex-row gap-4 w-full"
+            >
+              {/* Left Column (Standard Scroll) */}
+              <div className="grid grid-cols-1 gap-4 w-full lg:w-1/2 self-start lg:sticky lg:top-45">
+                {leftColumnData.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`p-6 lg:p-[30px] shadow-xl group hover:bg-[#A83552] flex flex-col items-start justify-between gap-6 lg:gap-10 text-black hover:text-white border border-[#E0E0E0] rounded-xl transition-all duration-300 ${
+                      item.id === "01" ? "mt-0 lg:mt-30" : ""
+                    }`}
+                  >
+                    <h1 className="text-lg lg:text-[20px]">{item.id}</h1>
+                    <h1 className="uppercase text-lg lg:text-[20px] ">
+                      {item.title}
+                    </h1>
+                    <p className="text-sm lg:text-[14px] group-hover:text-[#FFC1C2] mb-4 lg:mb-15">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          <div className="grid grid-cols-1 gap-4 w-full lg:w-1/2 self-start">
-            {rightColumnData.map((item, index) => (
-              <div
-                key={index}
-                className="p-6 lg:p-[30px] group hover:bg-[#A83552] flex flex-col items-start justify-between gap-6 lg:gap-10 text-black hover:text-white border border-[#E0E0E0] rounded-xl transition-all duration-300"
+              {/* Right Column (Parallax Scroll) */}
+              <motion.div
+                style={{ y: yRightColumn }}
+                className="grid grid-cols-1 gap-4 w-full lg:w-1/2 self-start lg:sticky lg:top-45"
               >
-                <h1 className="text-lg lg:text-[20px]">{item.id}</h1>
-                <h1 className="uppercase text-lg lg:text-[20px] ">
-                  {item.title}
-                </h1>
-                <p className="text-sm lg:text-[14px] group-hover:text-[#FFC1C2] mb-4 lg:mb-15">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
+                {rightColumnData.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`p-6 shadow-xl lg:p-[30px] group hover:bg-[#A83552] flex flex-col items-start justify-between gap-6 lg:gap-10 text-black hover:text-white border border-[#E0E0E0] rounded-xl transition-all duration-300 ${
+                      item.id === "04" ||
+                      (activeTab === "abdichtungen" && item.id === "02") ||
+                      (activeTab === "unterhalt" && item.id === "03")
+                        ? "mt-17 lg:mt-0"
+                        : ""
+                    }`}
+                  >
+                    <h1 className="text-lg lg:text-[20px]">{item.id}</h1>
+                    <h1 className="uppercase text-lg lg:text-[20px] ">
+                      {item.title}
+                    </h1>
+                    <p className="text-sm lg:text-[14px] group-hover:text-[#FFC1C2] mb-4 lg:mb-15">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
