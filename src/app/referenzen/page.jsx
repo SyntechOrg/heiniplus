@@ -37,12 +37,10 @@ const Page = () => {
     <div>
       <StartPage image={frame1} title="Referenzen" />
 
-      <RevealOnDesktop>
-        <Projects />
-      </RevealOnDesktop>
+      <Projects />
 
       <RevealOnDesktop>
-        <Video1 />
+        <Video1 src="/videos/video.mp4" />
       </RevealOnDesktop>
     </div>
   );

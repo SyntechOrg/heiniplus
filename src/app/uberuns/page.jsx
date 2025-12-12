@@ -54,7 +54,7 @@ const Page = () => {
         <Bieten />
       </RevealOnDesktop>
       <RevealOnDesktop>
-        <Video1 />
+        <Video1 src="/videos/video2.mp4" />
       </RevealOnDesktop>
     </div>
   );

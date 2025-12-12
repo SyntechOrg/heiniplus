@@ -56,9 +56,9 @@ export default function Home() {
         <Unterhalt />
       </RevealOnDesktop>
 
-      <RevealOnDesktop>
+      {/* <RevealOnDesktop>
         <Partner />
-      </RevealOnDesktop>
+      </RevealOnDesktop> */}
 
       <RevealOnDesktop>
         <Einige />

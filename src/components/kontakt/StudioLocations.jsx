@@ -27,7 +27,7 @@ const StudioLocations = () => {
               title="Emmenweidstrasse Map"
             ></iframe>
 
-            <div className="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-md max-w-[250px] text-xs">
+            {/* <div className="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-md max-w-[250px] text-xs">
               <h3 className="font-bold text-gray-800 text-sm mb-1">
                 Emmenweidstrasse 120
               </h3>
@@ -42,7 +42,7 @@ const StudioLocations = () => {
               >
                 Größere Karte ansehen
               </a>
-            </div>
+            </div> */}
           </div>
 
           <div className="w-full h-[600px] rounded-3xl overflow-hidden shadow-lg relative bg-gray-200">
@@ -58,7 +58,7 @@ const StudioLocations = () => {
               title="Hansmatt Map"
             ></iframe>
 
-            <div className="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-md max-w-[250px] text-xs">
+            {/* <div className="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-md max-w-[250px] text-xs">
               <h3 className="font-bold text-gray-800 text-sm mb-1">
                 Hansmatt 8
               </h3>
@@ -71,7 +71,7 @@ const StudioLocations = () => {
               >
                 Größere Karte ansehen
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

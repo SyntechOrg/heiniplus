@@ -1,11 +1,14 @@
 "use client";
 import React from "react";
 
-const Video1 = () => {
+// Accept 'src' as a prop here
+const Video1 = ({ src }) => {
   return (
-    <div className="relative overflow-x-hidden h-screen 100vw">
+    <div className="relative overflow-x-hidden h-screen w-full">
+      {" "}
+      {/* Fixed w-full instead of 100vw to prevent scrollbars */}
       <video
-        src="/videos/video.mp4"
+        src={src} // Use the dynamic prop here
         autoPlay
         loop
         muted
@@ -18,7 +21,6 @@ const Video1 = () => {
           background: "linear-gradient(180deg, #A8355200 0%, #A8355299 100%)",
         }}
       />
-
       <div className="container mx-auto relative w-full h-full z-10 px-4">
         <div className="absolute bottom-16 md:bottom-20 left-4 md:left-0 w-full">
           <h2 className="uppercase text-white text-sm md:text-base tracking-widest mb-2">

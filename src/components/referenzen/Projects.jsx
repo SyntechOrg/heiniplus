@@ -1,6 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
+
 import home1 from "../../../public/images/home1.jpg";
 import home2 from "../../../public/images/home2.jpg";
 import home3 from "../../../public/images/home3.jpg";
@@ -22,8 +24,6 @@ import home18 from "../../../public/images/home18.jpg";
 import home19 from "../../../public/images/home19.jpg";
 import home20 from "../../../public/images/home20.jpg";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
 const projectsData = [
   {
     id: 1,
@@ -31,11 +31,7 @@ const projectsData = [
     title: "Allmendli, Hergiswil",
     location: "STANDORT",
     year: "JAHR",
-    description: [
-      "Die Heini Plus GmbH war bei diesem exklusiven Projekt in Luzern verantwortlich für die Planung und Realisierung hochwertiger Innenausbauarbeiten. Das traditionsreiche Palace Hotel and Conferences vereint elegantes Design mit modernster Funktionalität eingebettet in eine beeindruckende Umgebung zwischen See und Bergen.",
-      "Mit höchster Präzision wurden massgeschneiderte Lösungen für Zimmer, Konferenzräume und öffentliche Bereiche umgesetzt. Das Ergebnis ist ein harmonisches Gesamtbild, das durch Qualität, Stilbewusstsein und Liebe zum Detail überzeugt.",
-    ],
-    images: [home1, home1, home1, home1],
+    image: home1,
   },
   {
     id: 2,
@@ -43,11 +39,7 @@ const projectsData = [
     title: "Eschenmatt, Rothenburg",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war bei diesem modernen Wohnprojekt in Rothenburg für die Planung und Umsetzung hochwertiger Innenausbauarbeiten verantwortlich. Die beiden Einfamilienhäuser Tri Adore zeichnen sich durch eine klare Architektur, helle Räume und eine harmonische Verbindung von Funktionalität und Ästhetik aus.",
-      "Durch präzise Ausführung und den Einsatz erstklassiger Materialien entstand ein Wohnkonzept, das modernen Lebenskomfort mit stilvollem Design vereint. Das Ergebnis überzeugt durch Qualität, Nachhaltigkeit und ein stimmiges Gesamtbild bis ins kleinste Detail.",
-    ],
-    images: [home2, home2, home2, home2],
+    image: home2,
   },
   {
     id: 3,
@@ -55,11 +47,7 @@ const projectsData = [
     title: "Etappe 1 Beckenhof, Sursee",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war bei diesem anspruchsvollen Wohnbauprojekt in Beinwil für die Planung und Umsetzung der hochwertigen Innenausbauarbeiten verantwortlich. Die Wohnüberbauung Chriesimatt überzeugt durch moderne Architektur, lichtdurchflutete Räume und eine harmonische Integration in die ländliche Umgebung.",
-      "Mit Fokus auf Qualität, Funktionalität und Ästhetik wurden individuelle Lösungen für Wohnungen und Gemeinschaftsbereiche realisiert. Das Ergebnis ist ein zeitgemässes Wohnensemble, das höchsten Ansprüchen an Komfort, Nachhaltigkeit und Design gerecht wird.",
-    ],
-    images: [home3, home3, home3, home3],
+    image: home3,
   },
   {
     id: 4,
@@ -67,11 +55,7 @@ const projectsData = [
     title: "Etappe 2, Beckenhof, Sursee",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war bei der Renovation und dem hochwertigen Innenausbau der historischen Villa Krämersteinin Horw beteiligt. Das traditionsreiche Gebäude wurde mit viel Liebe zum Detail modernisiert und in eine exklusive Wohnresidenz verwandelt, die den Charme vergangener Zeiten mit zeitgemäßer Eleganz verbindet.",
-      "Durch sorgfältige Planung und präzise Ausführung entstand ein harmonisches Zusammenspiel von klassischer Architektur und moderner Funktionalität. Hochwertige Materialien, feine Oberflächen und stilvolle Raumlösungen verleihen der Villa ein einzigartiges Ambiente voller Charakter und Raffinesse.",
-    ],
-    images: [home4, home4, home4, home4],
+    image: home4,
   },
   {
     id: 5,
@@ -79,11 +63,7 @@ const projectsData = [
     title: "Kuster, Stans",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home5, home5, home5, home5],
+    image: home5,
   },
   {
     id: 6,
@@ -91,11 +71,7 @@ const projectsData = [
     title: "Leumatt, Buchrain",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home6, home6, home6, home6],
+    image: home6,
   },
   {
     id: 7,
@@ -103,11 +79,7 @@ const projectsData = [
     title: "MFH Tri Adore, Rothenburg",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home7, home7, home7, home7],
+    image: home7,
   },
   {
     id: 8,
@@ -115,11 +87,7 @@ const projectsData = [
     title: "MFH, Hergiswil",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home8, home8, home8, home8],
+    image: home8,
   },
   {
     id: 9,
@@ -127,11 +95,7 @@ const projectsData = [
     title: "Panorama, Hergisiwl",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home9, home9, home9, home9],
+    image: home9,
   },
   {
     id: 10,
@@ -139,11 +103,7 @@ const projectsData = [
     title: "Seepark, Beckenried",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home10, home10, home10, home10],
+    image: home10,
   },
   {
     id: 11,
@@ -151,11 +111,7 @@ const projectsData = [
     title: "Sonnhofpark, Inwil",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home11, home11, home11, home11],
+    image: home11,
   },
   {
     id: 12,
@@ -163,11 +119,7 @@ const projectsData = [
     title: "Willisau, Bahnhofstrasse Süd",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home12, home12, home12, home12],
+    image: home12,
   },
   {
     id: 13,
@@ -175,11 +127,7 @@ const projectsData = [
     title: "Hotel Kulm, Pilatus",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war bei diesem exklusiven Projekt in Luzern verantwortlich für die Planung und Realisierung hochwertiger Innenausbauarbeiten. Das traditionsreiche Palace Hotel  and Conferences vereint elegantes Design mit modernster Funktionalität eingebettet in eine beeindruckende Umgebung zwischen See und Bergen.",
-      "Mit höchster Präzision wurden massgeschneiderte Lösungen für Zimmer, Konferenzräume und öffentliche Bereiche umgesetzt. Das Ergebnis ist ein harmonisches Gesamtbild, das durch Qualität, Stilbewusstsein und Liebe zum Detail überzeugt.",
-    ],
-    images: [home13, home13, home13, home13],
+    image: home13,
   },
   {
     id: 14,
@@ -187,11 +135,7 @@ const projectsData = [
     title: "Im Dock, Rothenburg",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war bei diesem modernen Wohnprojekt in Rothenburg für die Planung und Umsetzung hochwertiger Innenausbauarbeiten verantwortlich. Die beiden Einfamilienhäuser Tri Adore zeichnen sich durch eine klare Architektur, helle Räume und eine harmonische Verbindung von Funktionalität und Ästhetik aus.",
-      "Durch präzise Ausführung und den Einsatz erstklassiger Materialien entstand ein Wohnkonzept, das modernen Lebenskomfort mit stilvollem Design vereint. Das Ergebnis überzeugt durch Qualität, Nachhaltigkeit und ein stimmiges Gesamtbild bis ins kleinste Detail.",
-    ],
-    images: [home14, home14, home14, home14],
+    image: home14,
   },
   {
     id: 15,
@@ -199,11 +143,7 @@ const projectsData = [
     title: "Kreuz, Rothenburg",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war bei diesem anspruchsvollen Wohnbauprojekt in Beinwil für die Planung und Umsetzung der hochwertigen Innenausbauarbeiten verantwortlich. Die Wohnüberbauung Chriesimatt überzeugt durch moderne Architektur, lichtdurchflutete Räume und eine harmonische Integration in die ländliche Umgebung.",
-      "Mit Fokus auf Qualität, Funktionalität und Ästhetik wurden individuelle Lösungen für Wohnungen und Gemeinschaftsbereiche realisiert. Das Ergebnis ist ein zeitgemässes Wohnensemble, das höchsten Ansprüchen an Komfort, Nachhaltigkeit und Design gerecht wird.",
-    ],
-    images: [home15, home15, home15, home15],
+    image: home15,
   },
   {
     id: 16,
@@ -211,11 +151,7 @@ const projectsData = [
     title: "Palace Hotel",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war bei der Renovation und dem hochwertigen Innenausbau der historischen Villa Krämersteinin Horw beteiligt. Das traditionsreiche Gebäude wurde mit viel Liebe zum Detail modernisiert und in eine exklusive Wohnresidenz verwandelt, die den Charme vergangener Zeiten mit zeitgemäßer Eleganz verbindet.",
-      "Durch sorgfältige Planung und präzise Ausführung entstand ein harmonisches Zusammenspiel von klassischer Architektur und moderner Funktionalität. Hochwertige Materialien, feine Oberflächen und stilvolle Raumlösungen verleihen der Villa ein einzigartiges Ambiente voller Charakter und Raffinesse.",
-    ],
-    images: [home16, home16, home16, home16],
+    image: home16,
   },
   {
     id: 17,
@@ -223,11 +159,7 @@ const projectsData = [
     title: "Pflegezentrum Nägeligasse, Stans",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home17, home17, home17, home17],
+    image: home17,
   },
   {
     id: 18,
@@ -235,11 +167,7 @@ const projectsData = [
     title: "Pflegezentrum Oberkirch",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home18, home18, home18, home18],
+    image: home18,
   },
   {
     id: 19,
@@ -247,11 +175,7 @@ const projectsData = [
     title: "Sanierung Hauptsitz LUKB, Luzern",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home19, home19, home19, home19],
+    image: home19,
   },
   {
     id: 20,
@@ -259,97 +183,84 @@ const projectsData = [
     title: "Sanierung Trisa, Triengen",
     location: "STANDORT",
     year: "jahr",
-    description: [
-      "Die Heini Plus GmbH war für die Planung und den hochwertigen Innenausbau der modernen Wohnüberbauung Brunnenhof verantwortlich. Das Projekt vereint klare Architektur, offene Grundrisse und grosszügige Wohnflächen mit einem beeindruckenden Blick auf die umliegende Natur.",
-      "Mit Fokus auf Qualität, Komfort und Nachhaltigkeit wurden sämtliche Wohneinheiten individuell gestaltet. Durch die Verwendung erstklassiger Materialien und präzise Ausführung entstand ein harmonisches Gesamtkonzept, das Funktionalität und Ästhetik auf höchstem Niveau verbindet.",
-    ],
-    images: [home20, home20, home20, home20],
+    image: home20,
   },
 ];
 
-const ProjectItem = ({ project }) => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+// --- HELPER FUNCTION: Fisher-Yates Shuffle ---
+// This function randomizes the array without mutating the original
+const shuffleArray = (array) => {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};
 
-  const handlePrevImage = () => {
-    setSelectedImageIndex((prev) =>
-      prev === 0 ? project.images.length - 1 : prev - 1
-    );
-  };
-
-  const handleNextImage = () => {
-    setSelectedImageIndex((prev) =>
-      prev === project.images.length - 1 ? 0 : prev + 1
-    );
-  };
-
+// Project Item Component
+const ProjectItem = ({ project, onImageClick }) => {
   return (
-    <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-20 border-b border-gray-200 pb-20 mb-20 last:border-0">
-      <div className="lg:w-1/2 lg:border-r lg:border-r-[#E0E0E0] lg:pr-10">
-        <div className="flex flex-row items-center justify-start gap-4 mb-8">
-          <div className="text-white bg-[#A83552] px-10 py-3 rounded-full text-[12px] uppercase tracking-wide">
-            {project.location}
-          </div>
-          <div className="text-white bg-[#A83552] px-10 py-3 rounded-full text-[12px] uppercase tracking-wide">
-            {project.year}
-          </div>
+    <div className="flex flex-col gap-6 mb-20 w-full">
+      {/* 1. TITLE */}
+      <h1 className="text-[28px] lg:text-[32px] leading-tight  uppercase text-black">
+        {project.title}
+      </h1>
+
+      {/* 2. BADGES (Location & Year) */}
+      <div className="flex flex-row items-center justify-start gap-4">
+        <div className="text-white bg-[#A83552] px-8 py-2 rounded-full text-[12px] uppercase tracking-wide">
+          {project.location}
         </div>
-
-        <div className="flex flex-col gap-8">
-          <h1 className="text-[32px] leading-tight font-medium uppercase text-black whitespace-pre-line">
-            {project.title}
-          </h1>
-
-          <div className="space-y-6 text-[#6C6C6C] leading-relaxed text-lg font-light">
-            {project.description.map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
-            ))}
-          </div>
+        <div className="text-white bg-[#A83552] px-8 py-2 rounded-full text-[12px] uppercase tracking-wide">
+          {project.year}
         </div>
       </div>
 
-      <div className="lg:w-1/2 flex flex-col gap-4">
-        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden group">
-          <Image
-            src={project.images[selectedImageIndex]}
-            alt={project.title}
-            fill
-            className="object-cover"
-          />
+      {/* 3. SINGLE IMAGE WITH HOVER HINT & CLICK HANDLER */}
+      <div
+        className="relative w-full aspect-[16/9] lg:aspect-[2/1] rounded-2xl overflow-hidden mt-2 cursor-pointer group"
+        onClick={() => onImageClick(project.image)}
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+        />
 
-          <button
-            onClick={handlePrevImage}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#A83552] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#8a2b42]"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={handleNextImage}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#A83552] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#8a2b42]"
-          >
-            <ChevronRight size={24} />
-          </button>
+        {/* Hover Hint Overlay */}
+        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div className="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <ZoomIn size={20} />
+            <span className="font-medium">Vergrössern</span>
+          </div>
         </div>
+      </div>
+    </div>
+  );
+};
 
-        <div className="grid grid-cols-4 gap-4 mt-2">
-          {project.images.map((img, index) => (
-            <button
-              key={index}
-              onClick={() => setSelectedImageIndex(index)}
-              className={`relative aspect-[4/3] rounded-lg overflow-hidden transition-all ${
-                selectedImageIndex === index
-                  ? "ring-2 ring-[#A83552] ring-offset-2"
-                  : "opacity-70 hover:opacity-100"
-              }`}
-            >
-              <Image
-                src={img}
-                alt={`Thumbnail ${index + 1}`}
-                fill
-                className="object-cover"
-              />
-            </button>
-          ))}
-        </div>
+// Full Screen Image Modal Component
+const ImageModal = ({ image, onClose }) => {
+  if (!image) return null;
+
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4">
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-60 bg-black/50 p-2 rounded-full"
+      >
+        <X size={32} />
+      </button>
+      <div className="relative w-full h-full max-w-7xl max-h-[90vh]">
+        <Image
+          src={image}
+          alt="Full screen preview"
+          fill
+          className="object-contain"
+          quality={100}
+        />
       </div>
     </div>
   );
@@ -357,7 +268,10 @@ const ProjectItem = ({ project }) => {
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("ALLE PROJEKTE");
+  // NEW: State to hold the displayed projects separately so we can shuffle them
+  const [displayedProjects, setDisplayedProjects] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(null);
   const itemsPerPage = 6;
 
   const categories = [
@@ -367,105 +281,143 @@ const Projects = () => {
     "ÖFFENTLICH",
   ];
 
-  // Filter projects based on active category
-  const filteredProjects =
-    activeCategory === "ALLE PROJEKTE"
-      ? projectsData
-      : projectsData.filter((p) => p.category === activeCategory);
+  // NEW: Initial shuffle on component mount
+  useEffect(() => {
+    setDisplayedProjects(shuffleArray(projectsData));
+  }, []);
 
-  // Calculate pagination
-  const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentProjects = filteredProjects.slice(startIndex, endIndex);
+  // Scroll to Top Helper Function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
-  // Reset to page 1 when category changes
+  // UPDATED: Handle Category Change with Shuffle Logic
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
     setCurrentPage(1);
+    scrollToTop();
+
+    if (category === "ALLE PROJEKTE") {
+      // If "ALLE PROJEKTE" is clicked, shuffle the full list
+      setDisplayedProjects(shuffleArray(projectsData));
+    } else {
+      // Otherwise, filter normally by category (not shuffled, or shuffled if you prefer)
+      const filtered = projectsData.filter((p) => p.category === category);
+      setDisplayedProjects(filtered);
+    }
   };
+
+  // Calculate pagination based on 'displayedProjects' instead of 'filteredProjects'
+  const totalPages = Math.ceil(displayedProjects.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProjects = displayedProjects.slice(startIndex, endIndex);
 
   const handlePrevPage = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
+    scrollToTop();
   };
 
   const handleNextPage = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+    scrollToTop();
+  };
+
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+    scrollToTop();
   };
 
   return (
-    <div className="container mx-auto px-4 py-10 max-w-[1200px]">
-      {/* Category Filters */}
-      <div className="flex flex-wrap gap-4 mb-16">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => handleCategoryChange(cat)}
-            className={`px-8 py-2 rounded-full text-sm transition-colors ${
-              activeCategory === cat
-                ? "bg-[#A83552] text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Projects List */}
-      <div className="flex flex-col">
-        {currentProjects.map((project) => (
-          <ProjectItem key={project.id} project={project} />
-        ))}
-      </div>
-
-      {/* Pagination Controls */}
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-4 mt-12">
-          <button
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
-              currentPage === 1
-                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                : "bg-[#A83552] text-white hover:bg-[#8a2b42]"
-            }`}
-          >
-            <ChevronLeft size={20} />
-            Zurück
-          </button>
-
-          <div className="flex items-center gap-2">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`w-10 h-10 rounded-full text-sm font-medium transition-all ${
-                  currentPage === page
-                    ? "bg-[#A83552] text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-          </div>
-
-          <button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
-              currentPage === totalPages
-                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                : "bg-[#A83552] text-white hover:bg-[#8a2b42]"
-            }`}
-          >
-            Weiter
-            <ChevronRight size={20} />
-          </button>
+    <>
+      <div className="container mx-auto px-4 py-10 max-w-[1200px]">
+        {/* Category Filters */}
+        <div className="flex flex-wrap gap-4 mb-16">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => handleCategoryChange(cat)}
+              className={`px-8 py-2 rounded-full text-sm transition-colors ${
+                activeCategory === cat
+                  ? "bg-[#A83552] text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
+
+        {/* Projects List */}
+        <div className="flex flex-col">
+          {currentProjects.map((project) => (
+            <ProjectItem
+              key={project.id}
+              project={project}
+              onImageClick={setSelectedImage}
+            />
+          ))}
+        </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-4 mt-12">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
+                currentPage === 1
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-[#A83552] text-white hover:bg-[#8a2b42]"
+              }`}
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            <div className="flex items-center gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageClick(page)}
+                    className={`w-10 h-10 rounded-full text-sm font-medium transition-all ${
+                      currentPage === page
+                        ? "bg-[#A83552] text-white"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                )
+              )}
+            </div>
+
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
+                currentPage === totalPages
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-[#A83552] text-white hover:bg-[#8a2b42]"
+              }`}
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Full Screen Image Modal */}
+      {selectedImage && (
+        <ImageModal
+          image={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
       )}
-    </div>
+    </>
   );
 };
 
