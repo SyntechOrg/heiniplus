@@ -153,7 +153,7 @@ const Schau = () => {
                   </h1>
                   <hr className="text-[#ffff] w-full mt-6 lg:mt-10 mb-6 lg:mb-10 h-[1px]" />
                   <p className="text-[#ffff] text-base lg:text-[18px]">
-                    Bei Bedarf übernehmen wir Wartung oder Erneuerung.So bleibt
+                    Bei Bedarf übernehmen wir Wartung oder Erneuerung. So bleibt
                     der Schutz des Bauwerks langfristig erhalten.
                   </p>
                 </div>

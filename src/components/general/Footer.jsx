@@ -37,7 +37,7 @@ const Footer = () => {
                   hover:bg-[#8a2b42] group"
               >
                 <button className="text-[12px] uppercase text-white">
-                  get a quote
+                  ANGEBOT EINHOLEN + PROJEKTE
                 </button>
                 <Image
                   src={whiteArrow}

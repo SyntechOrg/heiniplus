@@ -9,9 +9,9 @@ const StudioLocations = () => {
           <p className="text-white/70 text-sm  tracking-widest uppercase mb-2">
             Besuchen Sie unsere Standorte
           </p>
-          <h2 className="text-white text-4xl md:text-5xl font-bold">
+          {/* <h2 className="text-white text-4xl md:text-5xl font-bold">
             Besuchen Sie unser Studio
-          </h2>
+          </h2> */}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="w-full h-[600px] rounded-3xl overflow-hidden shadow-lg relative bg-gray-200">

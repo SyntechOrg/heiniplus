@@ -1,13 +1,75 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import rec100 from "../../../public/images/Rectangle100.svg";
 import phone from "../../../public/images/phone.svg";
 import mail from "../../../public/images/mail.svg";
 import map from "../../../public/images/map.svg";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const KontaktForm = () => {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const [submitting, setSubmitting] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("https://formspree.io/f/meoyyrlo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (response.ok) {
+        setSucceeded(true);
+        setFormState({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          setSucceeded(false);
+        }, 5000);
+      } else {
+        setError(
+          "Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut."
+        );
+      }
+    } catch (err) {
+      setError(
+        "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="flex flex-col lg:flex-row items-start justify-between container mx-auto px-4 py-10 gap-10 lg:gap-20">
       <div className="w-full lg:w-1/2 bg-[#F8F8F8] rounded-3xl p-6 md:p-8 lg:p-12 xl:p-16">
@@ -15,72 +77,110 @@ const KontaktForm = () => {
           Senden Sie uns eine Nachricht
         </h2>
 
-        <form className="flex flex-col gap-4 md:gap-6">
+        {/* Success Message */}
+        {succeeded && (
+          <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3 text-green-700">
+            <CheckCircle2 size={24} className="flex-shrink-0" />
+            <p className="text-sm md:text-base">
+              Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir werden
+              uns bald bei Ihnen melden.
+            </p>
+          </div>
+        )}
+
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700">
+            <p className="text-sm md:text-base">{error}</p>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <div className="flex flex-col gap-2">
-              <label htmlFor="name" className="text-[#1C2430] ">
+              <label htmlFor="name" className="text-[#1C2430]">
                 Name
               </label>
               <input
                 type="text"
                 id="name"
+                name="name"
+                value={formState.name}
+                onChange={handleChange}
                 placeholder="Vorname"
+                required
                 className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#A83552]/20 placeholder:text-gray-300"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="text-[#1C2430] ">
+              <label htmlFor="email" className="text-[#1C2430]">
                 E-Mail
               </label>
               <input
                 type="email"
                 id="email"
+                name="email"
+                value={formState.email}
+                onChange={handleChange}
                 placeholder="E-Mail-Adresse"
+                required
                 className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#A83552]/20 placeholder:text-gray-300"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="phone" className="text-[#1C2430] ">
+              <label htmlFor="phone" className="text-[#1C2430]">
                 Telefon
               </label>
               <input
                 type="tel"
                 id="phone"
+                name="phone"
+                value={formState.phone}
+                onChange={handleChange}
                 placeholder="+123 456 7890"
                 className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#A83552]/20 placeholder:text-gray-300"
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="subject" className="text-[#1C2430] ">
+              <label htmlFor="subject" className="text-[#1C2430]">
                 Betreff
               </label>
               <input
                 type="text"
                 id="subject"
+                name="subject"
+                value={formState.subject}
+                onChange={handleChange}
                 placeholder="Der Betreff"
+                required
                 className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#A83552]/20 placeholder:text-gray-300"
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="message" className="text-[#1C2430] ">
+            <label htmlFor="message" className="text-[#1C2430]">
               Nachrichten
             </label>
             <textarea
               id="message"
+              name="message"
+              value={formState.message}
+              onChange={handleChange}
               rows={6}
               placeholder="Ihre Nachricht"
+              required
               className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#A83552]/20 placeholder:text-gray-300 resize-none"
             />
           </div>
 
           <button
             type="submit"
-            className="mt-4 bg-[#A83552] text-[14px] text-white px-8 py-4 rounded-full tracking-widest inline-flex items-center justify-center gap-2 hover:bg-[#8a2b42] transition-colors w-full md:w-auto md:self-start "
+            disabled={submitting}
+            className="mt-4 bg-[#A83552] text-[14px] text-white px-8 py-4 rounded-full tracking-widest inline-flex items-center justify-center gap-2 hover:bg-[#8a2b42] transition-colors w-full md:w-auto md:self-start disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            NACHRICHT SENDEN
+            {submitting ? "WIRD GESENDET..." : "NACHRICHT SENDEN"}
             <ArrowRight size={20} />
           </button>
         </form>
@@ -91,11 +191,11 @@ const KontaktForm = () => {
         <div className="flex flex-col items-start justify-between gap-6">
           <div className="flex flex-row items-center justify-start gap-2">
             <Image src={rec100} alt="rectangle100" />
-            <h3 className="text-[#1C2430] text-[18px] ">
+            <h3 className="text-[#1C2430] text-[18px]">
               Nehmen Sie Kontakt auf
             </h3>
           </div>
-          <h1 className="text-[#1C2430] text-[32px] md:text-[40px] lg:text-[50px] leading-tight ">
+          <h1 className="text-[#1C2430] text-[32px] md:text-[40px] lg:text-[50px] leading-tight">
             Lassen Sie uns{" "}
             <span className="text-[#1C243080]">
               über Ihr <br className="hidden md:block" />
@@ -142,7 +242,11 @@ const KontaktForm = () => {
             <div className="flex flex-col sm:flex-row items-start justify-start gap-10">
               <div className="flex flex-col items-start justify-between gap-1">
                 <h4 className="text-[#1C2430] font-medium">Adresse 1</h4>
-                <a href="https://www.google.com/maps/place/Emmenweidstrasse+120,+6020+Emmen,+Switzerland/@47.0664199,8.2636169,698m/data=!3m2!1e3!4b1!4m6!3m5!1s0x478ffb53dd5e25e1:0x87e03d699c4e9de8!8m2!3d47.0664199!4d8.2636169!16s%2Fg%2F11rtrhy14k?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D">
+                <a
+                  href="https://www.google.com/maps/place/Emmenweidstrasse+120,+6020+Emmen,+Switzerland/@47.0664199,8.2636169,698m/data=!3m2!1e3!4b1!4m6!3m5!1s0x478ffb53dd5e25e1:0x87e03d699c4e9de8!8m2!3d47.0664199!4d8.2636169!16s%2Fg%2F11rtrhy14k?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <p className="text-[#5B5B5B] hover:text-[#A83552]">
                     A. Heini Plus GmbH <br />
                     Emmenweidstrasse 120 <br />
@@ -153,7 +257,11 @@ const KontaktForm = () => {
               </div>
               <div className="flex flex-col items-start justify-between gap-1">
                 <h4 className="text-[#1C2430] font-medium">Adresse 2</h4>
-                <a href="google.com/maps/place/Hansmatt+8,+6370+Stans,+Switzerland/data=!4m2!3m1!1s0x478ff76ad15cfdd5:0xff8e4f5c91806db3?sa=X&ved=1t:242&ictx=111">
+                <a
+                  href="https://www.google.com/maps/place/Hansmatt+8,+6370+Stans,+Switzerland/data=!4m2!3m1!1s0x478ff76ad15cfdd5:0xff8e4f5c91806db3?sa=X&ved=1t:242&ictx=111"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <p className="text-[#5B5B5B] hover:text-[#A83552]">
                     A. Heini Plus GmbH <br />
                     Hansmatt 8 <br />

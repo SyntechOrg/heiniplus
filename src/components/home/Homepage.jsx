@@ -4,7 +4,9 @@ import Image from "next/image";
 import homePage from "../../../public/images/homePage.png";
 import blackArrow from "../../../public/images/blackArrow.svg";
 import ractangle10 from "../../../public/images/Rectangle 10.svg";
-import ractangle20 from "../../../public/images/Rectangle 20.svg";
+
+// import ractangle20 from "../../../public/images/Rectangle 20.svg";
+import Link from "next/link";
 
 const Homepage = () => {
   return (
@@ -30,12 +32,12 @@ const Homepage = () => {
                 className="w-auto h-auto"
               />
               <Image
-                src={ractangle20}
+                src={ractangle10}
                 alt="indicator"
                 className="w-auto h-auto"
               />
               <Image
-                src={ractangle20}
+                src={ractangle10}
                 alt="indicator"
                 className="w-auto h-auto"
               />
@@ -47,7 +49,7 @@ const Homepage = () => {
               Seit 1997 realisieren wir hochwertige{" "}
               <br className="hidden md:block" /> Projekte in der ganzen Schweiz
             </p>
-            <a href="/uberuns#Bieten">
+            <Link href="/uberuns#Bieten">
               <div className="group inline-flex items-center rounded-full mb-10 md:mb-16 lg:mb-20 bg-white px-6 py-4 md:px-8 md:py-5 gap-3 tracking-wide cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:-translate-y-1 hover:shadow-lg">
                 <button className="text-black text-xs md:text-[13px] uppercase">
                   Unsere Leistungen
@@ -58,7 +60,7 @@ const Homepage = () => {
                   className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                 />
               </div>
-            </a>
+            </Link>
             <div className="h-3 md:h-5 bg-[#A83552] w-full absolute bottom-0 left-0 right-0"></div>
           </div>
         </div>

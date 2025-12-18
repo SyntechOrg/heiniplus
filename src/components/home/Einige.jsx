@@ -19,15 +19,13 @@ const Einige = () => {
                 <Image src={stars} alt="Rating" width={80} height={16} />
               </div>
               <p className="text-[#14171D] text-[13px] leading-relaxed  line-clamp-[8]">
-                „Das Team hat unsere Erwartungen wirklich übertroffen. Ihre
-                Einsatzbereitschaft und Expertise stellten sicher, dass jedes
-                Detail unseres Bürodesigns perfekt mit unserer Markenidentität
-                übereinstimmt. Das Endergebnis ist ein wunderschöner,
-                funktionaler Raum, der unsere Anforderungen ideal erfüllt. Wir
-                könnten nicht zufriedener sein!“
+                „Von der Beratung bis zur Ausführung verlief alles reibungslos.
+                Die Arbeiten wurden sehr sauber, präzise und termingerecht
+                ausgeführt. Das Team arbeitet professionell und zuverlässig. Wir
+                sind mit dem Resultat sehr zufrieden.“
               </p>
             </div>
-            <h3 className="text-[#6C6C6C] text-xs  mt-1">Jan Muster</h3>
+            <h3 className="text-[#6C6C6C] text-xs  mt-1">Markus Keller</h3>
           </div>
           <div className="relative w-[38%] aspect-[3/4] self-center rounded-lg overflow-hidden shrink-0">
             <Image
@@ -45,12 +43,13 @@ const Einige = () => {
                 <Image src={stars} alt="Rating" width={80} height={16} />
               </div>
               <p className="text-[#14171D] text-[13px] leading-relaxed  line-clamp-[8]">
-                "Ihre Professionalität und Liebe zum Detail haben unser
-                Traumhaus Wirklichkeit werden lassen. Wir könnten nicht
-                glücklicher sein!"
+                „Die Fugen- und Brandschutzarbeiten wurden fachgerecht und exakt
+                umgesetzt. Besonders geschätzt haben wir die transparente
+                Kommunikation und die saubere Arbeitsweise. Ein kompetenter und
+                verlässlicher Partner.“
               </p>
             </div>
-            <h3 className="text-[#6C6C6C] text-xs  mt-1">Dario Meller</h3>
+            <h3 className="text-[#6C6C6C] text-xs  mt-1">Bauleitung</h3>
           </div>
           <div className="relative w-[38%] aspect-[3/4] self-center rounded-lg overflow-hidden shrink-0">
             <Image
@@ -68,11 +67,13 @@ const Einige = () => {
                 <Image src={stars} alt="Rating" width={80} height={16} />
               </div>
               <p className="text-[#14171D] text-[13px] leading-relaxed  line-clamp-[8]">
-                "Professionell, transparent und effizient – unsere renovierte
-                Küche ist nun das Herz unseres Zuhauses!"
+                „Hohe Qualität, zuverlässige Termine und eine sehr angenehme
+                Zusammenarbeit. Die Arbeiten wurden sorgfältig ausgeführt und
+                entsprechen unseren Erwartungen vollumfänglich. Wir empfehlen
+                Heini Plus gerne weiter.“
               </p>
             </div>
-            <h3 className="text-[#6C6C6C] text-xs  mt-1">Lassy Chester</h3>
+            <h3 className="text-[#6C6C6C] text-xs  mt-1">Peter Huber</h3>
           </div>
           <div className="relative w-[38%] aspect-[3/4] self-center rounded-lg overflow-hidden shrink-0">
             <Image
@@ -89,14 +90,12 @@ const Einige = () => {
           <div className="flex flex-col items-start justify-between gap-4 p-8 border border-[#E3E3E3] rounded-lg w-[65%]">
             <Image src={stars} alt="stars" />
             <p className="text-[#14171D] text-lg  leading-relaxed">
-              „Das Team hat unsere Erwartungen wirklich übertroffen. Ihre
-              Einsatzbereitschaft und Expertise stellten sicher, dass jedes
-              Detail unseres Bürodesigns perfekt mit unserer Markenidentität
-              übereinstimmt. Das Endergebnis ist ein wunderschöner, funktionaler
-              Raum, der unsere Anforderungen ideal erfüllt. Wir könnten nicht
-              zufriedener sein!“
+              „Von der Beratung bis zur Ausführung verlief alles reibungslos.
+              Die Arbeiten wurden sehr sauber, präzise und termingerecht
+              ausgeführt. Das Team arbeitet professionell und zuverlässig. Wir
+              sind mit dem Resultat sehr zufrieden.“
             </p>
-            <h3 className="text-[#6C6C6C] text-lg ">Jan Muster</h3>
+            <h3 className="text-[#6C6C6C] text-lg ">Markus Keller</h3>
           </div>
           <div className="rounded-lg w-[33%] relative overflow-hidden min-h-[300px]">
             <Image
@@ -114,18 +113,22 @@ const Einige = () => {
           <div className="flex-1 flex flex-col items-start justify-between gap-4 p-8 border border-[#E3E3E3] rounded-lg">
             <Image src={stars} alt="stars" />
             <p className="text-[#14171D] text-lg  leading-relaxed">
-              "Ihre Professionalität und Liebe zum Detail haben unser Traumhaus
-              Wirklichkeit werden lassen. Wir könnten nicht glücklicher sein!"
+              „Die Fugen- und Brandschutzarbeiten wurden fachgerecht und exakt
+              umgesetzt. Besonders geschätzt haben wir die transparente
+              Kommunikation und die saubere Arbeitsweise. Ein kompetenter und
+              verlässlicher Partner.“
             </p>
-            <h3 className="text-[#6C6C6C] text-lg">Dario Meller</h3>
+            <h3 className="text-[#6C6C6C] text-lg">Bauleitung</h3>
           </div>
           <div className="flex-1 flex flex-col items-start justify-between gap-4 p-8 border border-[#E3E3E3] rounded-lg">
             <Image src={stars} alt="stars" />
             <p className="text-[#14171D] text-lg  leading-relaxed">
-              "Professionell, transparent und effizient – unsere renovierte
-              Küche ist nun das Herz unseres Zuhauses!"
+              „Hohe Qualität, zuverlässige Termine und eine sehr angenehme
+              Zusammenarbeit. Die Arbeiten wurden sorgfältig ausgeführt und
+              entsprechen unseren Erwartungen vollumfänglich. Wir empfehlen
+              Heini Plus gerne weiter.“
             </p>
-            <h3 className="text-[#6C6C6C] text-lg ">Lassy Chester</h3>
+            <h3 className="text-[#6C6C6C] text-lg ">Peter Huber</h3>
           </div>
         </div>
       </div>

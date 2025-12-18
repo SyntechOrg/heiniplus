@@ -84,7 +84,7 @@ const Bieten = () => {
       id: "05",
       title: "Brandschutzsteine",
       description:
-        "Flexible, modulare Lösungen für Brandabschottungen. Ermöglichen schnelle Montage und Nachinstallationen.",
+        "Flexible, modulare Lösungen für Brandabschottungen. Ermöglichen schnelle Montagen und Nachinstallationen.",
     },
   ];
 
@@ -120,7 +120,7 @@ const Bieten = () => {
       id: "03",
       title: "Wartungsaufträge",
       description:
-        "Individuell vereinbarte Wartungsverträge mit periodischen Kontrollen und Dokumentation.",
+        "Individuell vereinbarte Wartungsverträge mit periodischen Kontrollen und Dokumentationen.",
     },
   ];
 
@@ -201,9 +201,9 @@ const Bieten = () => {
                 className="w-full text-left py-4 border-b border-gray-200 group transition-all duration-300"
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-[#A83552] font-medium text-sm lg:text-base">
+                  {/* <span className="text-[#A83552] font-medium text-sm lg:text-base">
                     {category.number}
-                  </span>
+                  </span> */}
                   <span
                     className={`text-lg lg:text-[20px] transition-colors duration-300 ${
                       activeTab === category.id

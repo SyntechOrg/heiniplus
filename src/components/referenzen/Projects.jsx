@@ -89,14 +89,14 @@ const projectsData = [
     year: "jahr",
     image: home8,
   },
-  {
-    id: 9,
-    category: "MEHRFAMILIENHÄUSER",
-    title: "Panorama, Hergisiwl",
-    location: "STANDORT",
-    year: "jahr",
-    image: home9,
-  },
+  // {
+  //   id: 9,
+  //   category: "MEHRFAMILIENHÄUSER",
+  //   title: "Panorama, Hergisiwl",
+  //   location: "STANDORT",
+  //   year: "jahr",
+  //   image: home9,
+  // },
   {
     id: 10,
     category: "MEHRFAMILIENHÄUSER",

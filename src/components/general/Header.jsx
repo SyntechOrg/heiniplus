@@ -13,32 +13,33 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentHash, setCurrentHash] = useState("");
 
-  // Helper to check active state (requires both Path AND Hash to match)
-  // Default targetHash is "" (empty), meaning "active only if there is no hash"
+  // Helper to check active state
   const isActive = (path, targetHash = "") => {
     return pathname === path && currentHash === targetHash;
   };
 
-  // Update hash on mount, scroll (optional), and path change
+  // Update hash tracking
   useEffect(() => {
-    // Function to update hash state
     const updateHash = () => {
-      // window.location.hash includes the '#', e.g., "#Bieten"
       setCurrentHash(window.location.hash);
     };
 
     // Initial check
     updateHash();
 
-    // Listen for hash changes (e.g. clicking anchor links)
+    // Listen for hash changes
     window.addEventListener("hashchange", updateHash);
+
+    // Also listen for popstate (browser back/forward)
+    window.addEventListener("popstate", updateHash);
 
     return () => {
       window.removeEventListener("hashchange", updateHash);
+      window.removeEventListener("popstate", updateHash);
     };
   }, []);
 
-  // Also update hash when pathname changes (e.g. navigating from another page)
+  // Update hash when pathname changes
   useEffect(() => {
     setCurrentHash(window.location.hash);
   }, [pathname]);
@@ -61,6 +62,13 @@ const Header = () => {
     }
   }, [isOpen]);
 
+  // Handle link clicks with hash - manually update state
+  const handleHashClick = (hash) => {
+    setTimeout(() => {
+      setCurrentHash(hash);
+    }, 50);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
@@ -68,7 +76,7 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4 md:py-6 relative z-[10000]">
-        <Link href="/">
+        <Link href="/" onClick={() => handleHashClick("")}>
           <div className="shrink-0">
             <Image src={logo} alt="Logo" className="w-[80%]" />
           </div>
@@ -76,8 +84,8 @@ const Header = () => {
 
         <nav className="hidden lg:block text-white uppercase">
           <ul className="flex items-baseline justify-center gap-8 lg:gap-10">
-            {/* Startseite Link (Active only if hash is empty) */}
-            <Link href="/">
+            {/* Startseite */}
+            <Link href="/" onClick={() => handleHashClick("")}>
               <li
                 className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
                   isActive("/", "")
@@ -97,9 +105,31 @@ const Header = () => {
                 />
               </li>
             </Link>
-
-            {/* Leistungen Link (Active only if hash is #Bieten) */}
-            <Link href="/uberuns#Bieten">
+            <Link href="/uberuns" onClick={() => handleHashClick("")}>
+              <li
+                className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
+                  isActive("/uberuns", "")
+                    ? "-translate-y-1 scale-[1.03]"
+                    : "hover:-translate-y-1 hover:scale-[1.03]"
+                }`}
+              >
+                <p className="text-sm md:text-base">Über uns</p>
+                <Image
+                  src={rectangle}
+                  alt="underline"
+                  className={`transition-all duration-200 ${
+                    isActive("/uberuns", "")
+                      ? "opacity-100 translate-y-0 scale-100"
+                      : "opacity-0 translate-y-1 scale-75 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100"
+                  }`}
+                />
+              </li>
+            </Link>
+            {/* Leistungen */}
+            <Link
+              href="/uberuns#Bieten"
+              onClick={() => handleHashClick("#Bieten")}
+            >
               <li
                 className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
                   isActive("/uberuns", "#Bieten")
@@ -120,30 +150,10 @@ const Header = () => {
               </li>
             </Link>
 
-            {/* Über uns Link (Active only if hash is EMPTY) */}
-            <Link href="/uberuns">
-              <li
-                className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
-                  isActive("/uberuns", "")
-                    ? "-translate-y-1 scale-[1.03]"
-                    : "hover:-translate-y-1 hover:scale-[1.03]"
-                }`}
-              >
-                <p className="text-sm md:text-base">Über uns</p>
-                <Image
-                  src={rectangle}
-                  alt="underline"
-                  className={`transition-all duration-200 ${
-                    isActive("/uberuns", "")
-                      ? "opacity-100 translate-y-0 scale-100"
-                      : "opacity-0 translate-y-1 scale-75 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100"
-                  }`}
-                />
-              </li>
-            </Link>
+            {/* Über uns */}
 
-            {/* Referenzen Link */}
-            <Link href="/referenzen">
+            {/* Referenzen */}
+            <Link href="/referenzen" onClick={() => handleHashClick("")}>
               <li
                 className={`group flex cursor-pointer flex-col items-center gap-1 transition-transform duration-200 ${
                   isActive("/referenzen", "")
@@ -217,7 +227,10 @@ const Header = () => {
             className={`text-2xl font-medium tracking-wider transition-colors ${
               isActive("/", "") ? "text-[#A83552]" : "hover:text-[#A83552]"
             }`}
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              handleHashClick("");
+              setIsOpen(false);
+            }}
           >
             Startseite
           </Link>
@@ -228,7 +241,10 @@ const Header = () => {
                 ? "text-[#A83552]"
                 : "hover:text-[#A83552]"
             }`}
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              handleHashClick("#Bieten");
+              setIsOpen(false);
+            }}
           >
             Leistungen
           </Link>
@@ -239,7 +255,10 @@ const Header = () => {
                 ? "text-[#A83552]"
                 : "hover:text-[#A83552]"
             }`}
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              handleHashClick("");
+              setIsOpen(false);
+            }}
           >
             Über uns
           </Link>
@@ -250,7 +269,10 @@ const Header = () => {
                 ? "text-[#A83552]"
                 : "hover:text-[#A83552]"
             }`}
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              handleHashClick("");
+              setIsOpen(false);
+            }}
           >
             Referenzen
           </Link>

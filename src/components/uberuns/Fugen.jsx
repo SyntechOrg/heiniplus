@@ -55,14 +55,14 @@ function Fugen() {
 
       <div className="w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-12 md:gap-8 mb-10 md:mb-20 text-center md:text-left">
         <CounterStat
-          end={10000}
+          end={5000}
           label={
             <>
               Abgeschlossene <br /> Projekte
             </>
           }
         />
-        <CounterStat end={60} label={<>Baupartner</>} />
+        <CounterStat end={40} label={<>Baupartner</>} />
         <CounterStat
           end={28}
           label={

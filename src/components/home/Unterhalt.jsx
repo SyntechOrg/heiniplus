@@ -19,7 +19,8 @@ const Unterhalt = () => {
           <p className="text-[#555555] text-base md:text-[14px] leading-relaxed">
             Durch regelmässige Kontrolle und rechtzeitige Instandhaltung lassen
             sich Schäden früh erkennen und Folgekosten vermeiden. Wir kümmern
-            uns zuverlässig um die Pflege und Erhaltung von Fugen, Abdichtungs
+            uns zuverlässig um die Pflege und Erhaltung von Fugen, Abdichtungs-{" "}
+            <br />
             und Brandschutzbereichen in Gebäuden.
           </p>
           <a href="/uberuns#Bieten">
