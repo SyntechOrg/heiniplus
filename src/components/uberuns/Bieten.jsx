@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
 import {
   motion,
   useScroll,
@@ -11,6 +12,27 @@ import {
 const Bieten = () => {
   const [activeTab, setActiveTab] = useState("fugendichtungen");
   const containerRef = useRef(null);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const hash = window.location.hash.replace("#", "");
+
+    // Scroll to section
+    if (hash === "Bieten" && containerRef.current) {
+      setTimeout(() => {
+        containerRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
+    }
+
+    // Switch tab via hash
+    const categoryExists = categories.some((c) => c.id === hash);
+    if (categoryExists) {
+      setActiveTab(hash);
+    }
+  }, []);
 
   // Track scroll progress relative to this section
   const { scrollYProgress } = useScroll({
