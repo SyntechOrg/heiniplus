@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import pinkArrow from "../../../public/images/pinkArrow.svg";
+import Link from "next/link";
 
 const Unterhalt = () => {
   return (
@@ -24,7 +25,7 @@ const Unterhalt = () => {
             <br />
             und Brandschutzbereichen in Gebäuden.
           </p>
-          <a href="/uberuns#Bieten">
+          <Link href="/uberuns#Bieten">
             <div className="flex flex-row items-center gap-4 md:gap-8 group cursor-pointer">
               <button className="text-[#A83552] uppercase  tracking-widest text-sm md:text-base transition-colors group-hover:text-[#8a2b42]">
                 alle anzeigen
@@ -33,7 +34,7 @@ const Unterhalt = () => {
                 <Image src={pinkArrow} alt="Arrow" />
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
