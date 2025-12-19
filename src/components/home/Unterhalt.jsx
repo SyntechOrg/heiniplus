@@ -12,10 +12,10 @@ const Unterhalt = () => {
           <h2 className="text-[#A83552] text-sm font-medium tracking-widest uppercase">
             WAS WIR BIETEN
           </h2>
-          <h3 className="text-[32px] md:text-[27px] ">
+          {/* <h3 className="text-[32px] md:text-[27px] ">
             Fugendichtungen <br /> Brandabschottungen <br /> Abschottungen
             <br /> Unterhalt und Service
-          </h3>
+          </h3> */}
         </div>
         <div className="flex flex-col items-start justify-between gap-5 w-full lg:w-1/2">
           <p className="text-[#555555] text-base md:text-[14px] leading-relaxed">
@@ -37,39 +37,52 @@ const Unterhalt = () => {
           </Link>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
         <div className="p-8 md:p-[30px] group hover:bg-[#A83552] flex flex-col items-start justify-start gap-6 text-black hover:text-white border border-[#E0E0E0] rounded-xl transition-all duration-300 hover:shadow-lg">
           <span className="text-xl font-medium opacity-50 group-hover:opacity-100">
             01
           </span>
-          <h4 className="uppercase text-xl font-medium">Kontrollen</h4>
-          <p className="text-sm md:text-[14px] leading-relaxed text-[#555555] group-hover:text-[#FFC1C2] mb-4 md:mb-15">
+          <h4 className="uppercase text-xl font-medium">Fugendichtungen</h4>
+          {/* <p className="text-sm md:text-[14px] leading-relaxed text-[#555555] group-hover:text-[#FFC1C2] mb-4 md:mb-15">
             Überprüfung bestehender Fugen, Abdichtungen und Abschottungen auf
             Zustand, Alterung und Dichtheit. Wir erkennen mögliche
             Schwachstellen und informieren verständlich über den notwendigen
             Handlungsbedarf.
-          </p>
+          </p> */}
         </div>
         <div className="p-8 md:p-[30px] group hover:bg-[#A83552] flex flex-col items-start justify-start gap-6 text-black hover:text-white border border-[#E0E0E0] rounded-xl transition-all duration-300 hover:shadow-lg">
           <span className="text-xl font-medium opacity-50 group-hover:opacity-100">
             02
           </span>
-          <h4 className="uppercase text-xl font-medium">Serviceaufträge</h4>
-          <p className="text-sm md:text-[14px] leading-relaxed text-[#555555] group-hover:text-[#FFC1C2] mb-4 md:mb-15">
+          <h4 className="uppercase text-xl font-medium">Brandabschottungen</h4>
+          {/* <p className="text-sm md:text-[14px] leading-relaxed text-[#555555] group-hover:text-[#FFC1C2] mb-4 md:mb-15">
             Ausführung von Reparatur- und Unterhaltsarbeiten. Sorgfältig,
             effizient und termingerecht umgesetzt.
-          </p>
+          </p> */}
         </div>
         <div className="p-8 md:p-[30px] group hover:bg-[#A83552] flex flex-col items-start justify-start gap-6 text-black hover:text-white border border-[#E0E0E0] rounded-xl transition-all duration-300 hover:shadow-lg">
           <span className="text-xl font-medium opacity-50 group-hover:opacity-100">
             03
           </span>
-          <h4 className="uppercase text-xl font-medium">Wartungsaufträge</h4>
-          <p className="text-sm md:text-[14px] leading-relaxed text-[#555555] group-hover:text-[#FFC1C2] mb-4 md:mb-15">
+          <h4 className="uppercase text-xl font-medium">Abdichtungen</h4>
+          {/* <p className="text-sm md:text-[14px] leading-relaxed text-[#555555] group-hover:text-[#FFC1C2] mb-4 md:mb-15">
             Regelmässige Wartungen nach Vereinbarung, inklusive
             Terminüberwachung und Dokumentation. So bleiben Bauteile und
             Installationen langfristig geschützt.
-          </p>
+          </p> */}
+        </div>
+        <div className="p-8 md:p-[30px] group hover:bg-[#A83552] flex flex-col items-start justify-start gap-6 text-black hover:text-white border border-[#E0E0E0] rounded-xl transition-all duration-300 hover:shadow-lg">
+          <span className="text-xl font-medium opacity-50 group-hover:opacity-100">
+            04
+          </span>
+          <h4 className="uppercase text-xl font-medium">
+            Unterhalt und Service
+          </h4>
+          {/* <p className="text-sm md:text-[14px] leading-relaxed text-[#555555] group-hover:text-[#FFC1C2] mb-4 md:mb-15">
+            Regelmässige Wartungen nach Vereinbarung, inklusive
+            Terminüberwachung und Dokumentation. So bleiben Bauteile und
+            Installationen langfristig geschützt.
+          </p> */}
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ import home5 from "../../../public/images/home5.jpg";
 import home6 from "../../../public/images/home6.jpg";
 import home7 from "../../../public/images/home7.jpg";
 import home8 from "../../../public/images/home8.jpg";
-import home9 from "../../../public/images/home9.jpg";
+// import home9 from "../../../public/images/home9.jpg";
 import home10 from "../../../public/images/home10.jpg";
 import home11 from "../../../public/images/home11.jpg";
 import home12 from "../../../public/images/home12.jpg";
@@ -23,6 +23,12 @@ import home17 from "../../../public/images/home17.jpg";
 import home18 from "../../../public/images/home18.jpg";
 import home19 from "../../../public/images/home19.jpg";
 import home20 from "../../../public/images/home20.jpg";
+import home21 from "../../../public/images/home21.jpg";
+import home22 from "../../../public/images/home22.jpg";
+import home23 from "../../../public/images/home23.jpg";
+import home24 from "../../../public/images/home24.jpg";
+import home25 from "../../../public/images/home25.jpg";
+import home26 from "../../../public/images/home26.jpg";
 
 const projectsData = [
   {
@@ -185,6 +191,54 @@ const projectsData = [
     year: "jahr",
     image: home20,
   },
+  {
+    id: 21,
+    category: "EINFAMILIENHÄUSER",
+    title: "Villa, Kriens",
+    location: "STANDORT",
+    year: "jahr",
+    image: home21,
+  },
+  {
+    id: 22,
+    category: "EINFAMILIENHÄUSER",
+    title: "DEFH Triadore, Rothenburg",
+    location: "STANDORT",
+    year: "jahr",
+    image: home22,
+  },
+  {
+    id: 23,
+    category: "EINFAMILIENHÄUSER",
+    title: "EFH",
+    location: "STANDORT",
+    year: "jahr",
+    image: home23,
+  },
+  {
+    id: 24,
+    category: "EINFAMILIENHÄUSER",
+    title: "Gruobrain, Ennetmoos",
+    location: "STANDORT",
+    year: "jahr",
+    image: home24,
+  },
+  {
+    id: 25,
+    category: "EINFAMILIENHÄUSER",
+    title: "Kirschgarten, Schenkon",
+    location: "STANDORT",
+    year: "jahr",
+    image: home25,
+  },
+  {
+    id: 26,
+    category: "EINFAMILIENHÄUSER",
+    title: "Villa Krämmerstein, Horw",
+    location: "STANDORT",
+    year: "jahr",
+    image: home26,
+  },
 ];
 
 // --- HELPER FUNCTION: Fisher-Yates Shuffle ---
@@ -276,7 +330,7 @@ const Projects = () => {
 
   const categories = [
     "ALLE PROJEKTE",
-    // "EINFAMILIENHÄUSER",
+    "EINFAMILIENHÄUSER",
     "MEHRFAMILIENHÄUSER",
     "ÖFFENTLICH",
   ];
