@@ -30,14 +30,14 @@ const Footer = () => {
               Lassen Sie uns <br />
               etwas Zeitloses <br /> erschaffen
             </h1>
-            <a href="/kontakt">
+            <Link href="/kontakt">
               <div
                 className="bg-[#A83552] px-5 py-4 flex flex-row items-center justify-start
                   rounded-full gap-2 cursor-pointer transition-all duration-200
                   hover:bg-[#8a2b42] group"
               >
                 <button className="text-[12px] uppercase text-white">
-                  ANGEBOT EINHOLEN + PROJEKTE
+                  ANGEBOT EINHOLEN
                 </button>
                 <Image
                   src={whiteArrow}
@@ -45,7 +45,7 @@ const Footer = () => {
                   className="w-4 h-4 transform transition-transform duration-200 group-hover:translate-x-1"
                 />
               </div>
-            </a>
+            </Link>
           </div>
           <div className="bg-[#0000006E] absolute inset-0 z-0"></div>
         </div>
@@ -134,7 +134,7 @@ const Footer = () => {
               <div className="flex flex-col items-start gap-4">
                 <Link href="/referenzen">
                   <h1 className="text-lg text-[#FFFFFF66]  hover:text-[#A83552] transition-colors">
-                    Projects
+                    Projekte
                   </h1>
                 </Link>
                 <Link href="/uberuns#Bieten">

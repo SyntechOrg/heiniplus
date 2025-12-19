@@ -11,8 +11,9 @@ const Unterhalt = () => {
           <h2 className="text-[#A83552] text-sm font-medium tracking-widest uppercase">
             WAS WIR BIETEN
           </h2>
-          <h3 className="text-[32px] md:text-[38px]  leading-tight">
-            Unterhalt und Service
+          <h3 className="text-[32px] md:text-[27px] ">
+            Fugendichtungen <br /> Brandabschottungen <br /> Abschottungen
+            <br /> Unterhalt und Service
           </h3>
         </div>
         <div className="flex flex-col items-start justify-between gap-5 w-full lg:w-1/2">

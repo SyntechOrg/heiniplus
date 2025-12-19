@@ -276,7 +276,7 @@ const Projects = () => {
 
   const categories = [
     "ALLE PROJEKTE",
-    "EINFAMILIENHÄUSER",
+    // "EINFAMILIENHÄUSER",
     "MEHRFAMILIENHÄUSER",
     "ÖFFENTLICH",
   ];
