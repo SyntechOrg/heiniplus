@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import pinkArrow from "../../../public/images/pinkArrow.svg";
+import Link from "next/link";
 
 const Arbeiten = () => {
   return (
@@ -22,7 +23,7 @@ const Arbeiten = () => {
             Fachgerechte Ausführung in Neubau, Umbau und Sanierung. Sauber,
             präzise und zuverlässig.
           </p>
-          <a href="/referenzen">
+          <Link href="/referenzen">
             <button className="group inline-flex items-center justify-start gap-3 bg-white px-6 py-4 sm:px-8 sm:py-5 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:bg-gray-50">
               <span className="uppercase text-[#A83552]  text-xs sm:text-[13px] tracking-wide">
                 Alle Projekte anzeigen
@@ -36,7 +37,7 @@ const Arbeiten = () => {
                 />
               </div>
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
