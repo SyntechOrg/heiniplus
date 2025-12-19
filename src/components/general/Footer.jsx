@@ -64,7 +64,7 @@ const Footer = () => {
                     Schweiz
                   </p>
                 </a>
-                <a href="google.com/maps/place/Hansmatt+8,+6370+Stans,+Switzerland/data=!4m2!3m1!1s0x478ff76ad15cfdd5:0xff8e4f5c91806db3?sa=X&ved=1t:242&ictx=111">
+                <a href="https://www.google.com/maps/place/Hansmatt+8,+6370+Stans,+Switzerland/@46.9685507,8.3520722,699m/data=!3m2!1e3!4b1!4m6!3m5!1s0x478ff76ad15cfdd5:0xff8e4f5c91806db3!8m2!3d46.9685507!4d8.3520722!16s%2Fg%2F11cs5l2bnf?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D">
                   <p className="text-xl hover:text-[#A83552] md:text-[24px] text-white">
                     Hansmatt 8 <br />
                     6370 Stans <br />
